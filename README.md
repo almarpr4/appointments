@@ -1,43 +1,31 @@
-# Mastering React Test-Driven Development
+# Appointments
 
-Published by Packt
+This is the example application for the book _Mastering Test-Driven Development for React_.
 
-This is companion repository for the book _Mastering React Test-Driven Development_ by Daniel Irvine, published by Packt.
+Your source code should go in the `src` directory and your tests in `test`.
 
-The repository contains two branches, both of which are their own independent projects with their own READMEs. If you're interested in the contents of the books you can take a look at them now:
+# Prerequisities
 
-- [Appointments](https://github.com/PacktPublishing/Mastering-React-Test-Driven-Development/tree/appointments/appointments), a hair salon booking system
-- [Spec Logo](https://github.com/PacktPublishing/Mastering-React-Test-Driven-Development/tree/spec-logo/spec-logo]), an online Logo environment for building Logo scripts
+You'll need to have [Node](http://nodejs.org), including NPM, installed on your machine.
 
-The book itself has checkpoints that are based on various tags. If you're following along then you'll need to be comfortable switching tags.
+Run `npm install` before attempting any of the instructions below.
 
-## Working along with the book
+You may also wish to run `npm upgrade` to ensure your Node installation is up-to-date.
 
-You should fork and then clone this repo to your local machine, and then check out a tag:
+# Running tests
 
-    git checkout tags/starting-point
+Use the following command to run all tests.
 
-You should then branch from this tag before continuing with changes:
+    npm test
 
-    git checkout -b starting-point-mine
+You can also run tests in a single test file:
 
-# Merging in changes from additional commits
+    npm test test/AppointmentsDayView.test.js
 
-Not all commits are covered in the book. They have been omitted because they are repetitive and teach nothing new. These occasions are clearly marked at the start of each section. You have two choices:
+# Building and running the application
 
-- You can repeat the process above, starting a new branch and 'losing' all of your previous work in favor of the book's version. Of course, you'll still have the previous branch available that you were working on, it just won't join with your new branch.
-- You can merge in the commits that you were missing. This may not turn out to be straightforward if your code has deviated significantly from the book's code.
+Build the application using this command:
 
-You can compare the difference between your current HEAD and the listed tag with `git diff`:
+    npm run build
 
-    git diff load-available-time-slots
-
-You can then manually apply those changes.
-
-If you'd rather try to automate those changes, then you can use git merge:
-
-    git merge load-available-time-slots
-
-## Get in touch
-
-You can contact the author directly by raising Issues here in GitHub, or by contacting him on Twitter. He is [@d_ir](https://twitter.com/d_ir).
+Then you can open the app by browsing to `dist/index.html`.
