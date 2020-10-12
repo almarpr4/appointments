@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Appointment, AppointmentsDayView } from '../src/Appointment';
+import {
+  Appointment,
+  AppointmentsDayView,
+} from '../src/Appointment';
 
 describe('Appointment', () => {
   let container;
@@ -9,7 +12,8 @@ describe('Appointment', () => {
     container = document.createElement('div');
   });
 
-  const render = component => ReactDOM.render(component, container);
+  const render = (component) =>
+    ReactDOM.render(component, container);
 
   it('renders the customer first name', () => {
     customer = { firstName: 'Ashley' };
@@ -33,28 +37,28 @@ describe('AppointmentsDayView', () => {
   const today = new Date();
   const appointments = [
     { startsAt: today.setHours(12, 0) },
-    { startsAt: today.setHours(13, 0) }
+    { startsAt: today.setHours(13, 0) },
   ];
-  const render = component => ReactDOM.render(component, container);
+  const render = (component) =>
+    ReactDOM.render(component, container);
 
   beforeEach(() => {
     container = document.createElement('div');
   });
 
-
   it('renders a div with the right id', () => {
     render(<AppointmentsDayView appointments={[]} />);
 
-    expect(container.querySelector('div#appointmentsDayView')).not.toBeNull();
+    expect(
+      container.querySelector('div#appointmentsDayView')
+    ).not.toBeNull();
   });
 
   it('renders multiple appointments in an ol element', () => {
     render(<AppointmentsDayView appointments={appointments} />);
 
     expect(container.querySelector('ol')).not.toBeNull();
-    expect(
-      container.querySelector('ol').children
-    ).toHaveLength(2);
+    expect(container.querySelector('ol').children).toHaveLength(2);
   });
 
   it('renders each appointment in an li', () => {
@@ -68,5 +72,12 @@ describe('AppointmentsDayView', () => {
       container.querySelectorAll('li')[1].textContent
     ).toEqual('13:00');
   });
-});
 
+  it('initially shows a message saying there are no appointments today', () => {
+    render(<AppointmentsDayView appointments={[]} />);
+
+    expect(container.textContent).toMatch(
+      'There are no appointments scheduled for today.'
+    );
+  });
+});
