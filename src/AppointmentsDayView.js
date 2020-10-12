@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
 export const Appointment = ({ customer }) => (
-  <div> {customer.firstName} </div>
+  <div>
+    {customer.firstName}
+    {customer.lastName}
+</div>
+
 );
 
 export const AppointmentsDayView = ({ appointments }) => {

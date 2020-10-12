@@ -32,6 +32,22 @@ describe('Appointment', () => {
 
     expect(container.textContent).toMatch('Jordan');
   });
+
+  it('renders the customer first name', () => {
+    customer = { lastName: 'Martinez' };
+
+    render(<Appointment customer={customer} />);
+
+    expect(container.textContent).toMatch('Martinez');
+  });
+
+  it('renders the customer first name', () => {
+    customer = { lastName: 'Perez' };
+
+    render(<Appointment customer={customer} />);
+
+    expect(container.textContent).toMatch('Perez');
+  });
 });
 
 describe('AppointmentsDayView', () => {
