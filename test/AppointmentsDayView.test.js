@@ -100,12 +100,12 @@ describe('AppointmentsDayView', () => {
   const appointments = [
     {
       startsAt: today.setHours(12, 0),
-      customer: { firstName: 'Ashley' }
+      customer: { firstName: 'Ashley' },
     },
     {
       startsAt: today.setHours(13, 0),
-      customer: { firstName: 'Jordan' }
-    }
+      customer: { firstName: 'Jordan' },
+    },
   ];
   const render = (component) =>
     ReactDOM.render(component, container);
@@ -156,9 +156,9 @@ describe('AppointmentsDayView', () => {
 
   it('has a button element in each li', () => {
     render(<AppointmentsDayView appointments={appointments} />);
-    expect(
-      container.querySelectorAll('li > button')
-    ).toHaveLength(2);
+    expect(container.querySelectorAll('li > button')).toHaveLength(
+      2
+    );
     expect(
       container.querySelectorAll('li > button')[0].type
     ).toEqual('button');

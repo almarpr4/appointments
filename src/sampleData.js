@@ -1,17 +1,17 @@
 import { name, phone, lorem } from 'faker';
 
-Array.prototype.unique = function() {
-  return this.filter(function(value, index, self) {
+Array.prototype.unique = function () {
+  return this.filter(function (value, index, self) {
     return self.indexOf(value) === index;
   });
 };
 
-Array.prototype.pickRandom = function() {
+Array.prototype.pickRandom = function () {
   return this[Math.floor(Math.random() * this.length)];
 };
 
 const today = new Date();
-const at = hours => today.setHours(hours, 0);
+const at = (hours) => today.setHours(hours, 0);
 
 const stylists = [0, 1, 2, 3, 4, 5, 6]
   .map(() => name.firstName())
@@ -23,20 +23,20 @@ const services = [
   'Cut & color',
   'Beard trim',
   'Cut & beard trim',
-  'Extensions'
+  'Extensions',
 ];
 
 const generateFakeCustomer = () => ({
   firstName: name.firstName(),
   lastName: name.lastName(),
-  phoneNumber: phone.phoneNumberFormat(1)
+  phoneNumber: phone.phoneNumberFormat(1),
 });
 
 const generateFakeAppointment = () => ({
   customer: generateFakeCustomer(),
   stylist: stylists.pickRandom(),
   service: services.pickRandom(),
-  notes: lorem.paragraph()
+  notes: lorem.paragraph(),
 });
 
 export const sampleAppointments = [
@@ -48,5 +48,5 @@ export const sampleAppointments = [
   { startsAt: at(14), ...generateFakeAppointment() },
   { startsAt: at(15), ...generateFakeAppointment() },
   { startsAt: at(16), ...generateFakeAppointment() },
-  { startsAt: at(17), ...generateFakeAppointment() }
+  { startsAt: at(17), ...generateFakeAppointment() },
 ];
