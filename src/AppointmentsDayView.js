@@ -14,7 +14,6 @@ export const Appointment = ({
 }) => (
   <div id="appointmentView">
     <h3>
-      {' '}
       Today&rsquo;s appointment at {appointmentTimeOfDay(startsAt)}
     </h3>
     <table>
@@ -22,7 +21,6 @@ export const Appointment = ({
         <tr>
           <td>Customer</td>
           <td>
-            {' '}
             {customer.firstName} {customer.lastName}
           </td>
         </tr>
