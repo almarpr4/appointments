@@ -9,7 +9,7 @@ export const CustomerForm = ({ firstName, onSubmit }) => {
       firstName: target.value
     }));
 
-  return (<form id="customer" onSubmit={() => onSubmit(customer)} onChange={handleChangeFirstName}>
+  return (<form id="customer" onSubmit={() => onSubmit(customer)}  onChange={handleChangeFirstName}>
     <label htmlFor="firstName">First name</label>
     <input type="text" name="firstName" id="firstName"  value={firstName} readOnly />
   </form>)
