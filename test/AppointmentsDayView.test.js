@@ -92,6 +92,18 @@ describe('Appointment', () => {
     render(<Appointment customer={customer} notes="abc" />);
     expect(appointmentTable().textContent).toMatch('abc');
   });
+
+  it('renders a heading with the time', () => {
+    const today = new Date();
+    const timestamp = today.setHours(9, 0, 0);
+    render(
+      <Appointment customer={customer} startsAt={timestamp} />
+    );
+    expect(container.querySelector('h3')).not.toBeNull();
+    expect(container.querySelector('h3').textContent).toEqual(
+      'Today’s appointment at 09:00'
+    );
+  });
 });
 
 describe('AppointmentsDayView', () => {
@@ -169,5 +181,11 @@ describe('AppointmentsDayView', () => {
     const button = container.querySelectorAll('button')[1];
     ReactTestUtils.Simulate.click(button);
     expect(container.textContent).toMatch('Jordan');
+  });
+
+  it('does not add toggled class if button is not selected', () => {
+    render(<AppointmentsDayView appointments={appointments} />);
+    const button = container.querySelectorAll('button')[1];
+    expect(button.className).not.toMatch('toggled');
   });
 });
