@@ -90,4 +90,18 @@ describe('AppointmentForm', () => {
     );
     await ReactTestUtils.Simulate.submit(form('appointment'));
   });
+
+  it('saves new value when submitted', async () => {
+    expect.hasAssertions();
+    render(
+      <AppointmentForm
+        service="Blow-dry"
+        onSubmit={({ service }) => expect(service).toEqual('Cut')}
+      />
+    );
+    await ReactTestUtils.Simulate.change(field('service'), {
+      target: { value: 'Cut', name: 'service' },
+    });
+    await ReactTestUtils.Simulate.submit(form('appointment'));
+  });
 });

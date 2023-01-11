@@ -9,10 +9,21 @@ export const AppointmentForm = ({
 }) => {
   const [appointment, setAppointment] = useState({ service });
 
+  const handleServiceChange = ({ target: { value } }) =>
+    setAppointment((appointment) => ({
+      ...appointment,
+      service: value,
+    }));
+
   return (
     <form id="appointment" onSubmit={() => onSubmit(appointment)}>
       <label htmlFor="service">Salon service</label>
-      <select name="service" id="service" value={service} readOnly>
+      <select
+        name="service"
+        id="service"
+        value={service}
+        onChange={handleServiceChange}
+        readOnly>
         <option />
         {selectableServices.map((s) => (
           <option key={s}>{s}</option>
