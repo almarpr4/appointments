@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 const TimeSlotTable = () => <table id="time-slots" />;
+
 export const AppointmentForm = ({
   selectableServices,
   service,
-}) => (
-  <form id="appointment">
-    <label htmlFor="service">Salon service</label>
-    <select name="service" id="service" value={service} readOnly>
-      <option />
-      {selectableServices.map((s) => (
-        <option key={s}>{s}</option>
-      ))}
-    </select>
-  </form>
-);
+  onSubmit,
+}) => {
+  const [appointment, setAppointment] = useState({ service });
+
+  return (
+    <form id="appointment" onSubmit={() => onSubmit(appointment)}>
+      <label htmlFor="service">Salon service</label>
+      <select name="service" id="service" value={service} readOnly>
+        <option />
+        {selectableServices.map((s) => (
+          <option key={s}>{s}</option>
+        ))}
+      </select>
+    </form>
+  );
+};
 
 AppointmentForm.defaultProps = {
   selectableServices: [
